@@ -1,50 +1,82 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { useEffect, useRef } from "react";
+import "../Css/Dice.css";
 
-const Diceface = forwardRef((props, ref) => {
+const Diceface = ({ id }) => {
   const cubeRef = useRef(null);
+  const xRotation = useRef(0);
+  const yRotation = useRef(0);
 
-  useImperativeHandle(ref, () => ({
-    roll: (callback) => {
-      const cube = cubeRef.current;
+  useEffect(() => {
+    const cube = cubeRef.current;
 
-      // Completely random X/Y rotations
-      const spinsX = Math.floor(Math.random() * 360) + 720; // at least 2 spins
-      const spinsY = Math.floor(Math.random() * 360) + 720;
-
-      cube.style.transition = 'transform 2s ease-in-out';
-      cube.style.transform = `rotateX(${spinsX}deg) rotateY(${spinsY}deg)`;
-
-      setTimeout(() => {
-        // Calculate top face based on X rotation (simple approximation)
-        const xMod = spinsX % 360;
-        let num;
-        if ((xMod >= 0 && xMod < 60) || (xMod >= 300 && xMod < 360)) num = 1;
-        else if (xMod >= 60 && xMod < 120) num = 5;
-        else if (xMod >= 120 && xMod < 180) num = 6;
-        else if (xMod >= 180 && xMod < 240) num = 2;
-        else if (xMod >= 240 && xMod < 300) num = 4;
-
-        callback(num);
-      }, 2000);
+    function getRandom(max, min) {
+      return (Math.floor(Math.random() * (max - min)) + min) * 90;
     }
-  }));
+
+    const roll = () => {
+      xRotation.current += getRandom(24, 1);
+      yRotation.current += getRandom(24, 1);
+      cube.style.transform = `rotateX(${xRotation.current}deg) rotateY(${yRotation.current}deg)`;
+    };
+
+    cube.addEventListener("roll", roll);
+    return () => cube.removeEventListener("roll", roll);
+  }, []);
 
   return (
-    <div className="dice-wrapper">
-      <div className="dice-border">
-        <div className="dice-container">
-          <div ref={cubeRef} className="dice-cube">
-            <div className="dice-face dice-front"><span className="dot dot1" /></div>
-            <div className="dice-face dice-back"><span className="dot dot1" /><span className="dot dot2" /></div>
-            <div className="dice-face dice-right"><span className="dot dot1" /><span className="dot dot2" /><span className="dot dot3" /></div>
-            <div className="dice-face dice-left"><span className="dot dot1" /><span className="dot dot2" /><span className="dot dot3" /><span className="dot dot4" /></div>
-            <div className="dice-face dice-top"><span className="dot dot1" /><span className="dot dot2" /><span className="dot dot3" /><span className="dot dot4" /><span className="dot dot5" /></div>
-            <div className="dice-face dice-bottom"><span className="dot dot1" /><span className="dot dot2" /><span className="dot dot3" /><span className="dot dot4" /><span className="dot dot5" /><span className="dot dot6" /></div>
+    <div className="dice3d-wrapper">
+      <div className="outer-dice-border">
+        <div className="dice3d-container">
+          <div ref={cubeRef} id={id} className="dice3d-cube">
+            {/* Face 1 */}
+            <div className="dice3d-face dice3d-front">
+              <span className="dice3d-dot dot1" />
+            </div>
+
+            {/* Face 2 */}
+            <div className="dice3d-face dice3d-back">
+              <span className="dice3d-dot dot1" />
+              <span className="dice3d-dot dot2" />
+            </div>
+
+            {/* Face 3 */}
+            <div className="dice3d-face dice3d-right">
+              <span className="dice3d-dot dot1" />
+              <span className="dice3d-dot dot2" />
+              <span className="dice3d-dot dot3" />
+            </div>
+
+            {/* Face 4 */}
+            <div className="dice3d-face dice3d-left">
+              <span className="dice3d-dot dot1" />
+              <span className="dice3d-dot dot2" />
+              <span className="dice3d-dot dot3" />
+              <span className="dice3d-dot dot4" />
+            </div>
+
+            {/* Face 5 */}
+            <div className="dice3d-face dice3d-top">
+              <span className="dice3d-dot dot1" />
+              <span className="dice3d-dot dot2" />
+              <span className="dice3d-dot dot3" />
+              <span className="dice3d-dot dot4" />
+              <span className="dice3d-dot dot5" />
+            </div>
+
+            {/* Face 6 */}
+            <div className="dice3d-face dice3d-bottom">
+              <span className="dice3d-dot dot1" />
+              <span className="dice3d-dot dot2" />
+              <span className="dice3d-dot dot3" />
+              <span className="dice3d-dot dot4" />
+              <span className="dice3d-dot dot5" />
+              <span className="dice3d-dot dot6" />
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-});
+};
 
 export default Diceface;

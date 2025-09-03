@@ -1,20 +1,37 @@
-/* Dice Wrapper & Outer Border */
-.dice-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
+/* Custom attractive scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
 }
 
-.dice-border {
+.custom-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #facc15, #10b981);
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #eab308, #059669);
+}
+
+.outer-dice-border {
   display: inline-flex;
-  padding: 4px;
+  padding: 3px;
   background-color: black;
   border-radius: 50%;
 }
 
-/* Dice Container with 3D perspective */
-.dice-container {
+.dice3d-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.dice3d-container {
   width: 110px;
   height: 110px;
   border-radius: 50%;
@@ -27,8 +44,7 @@
   overflow: hidden;
 }
 
-/* Dice Cube */
-.dice-cube {
+.dice3d-cube {
   width: 60px;
   height: 60px;
   position: relative;
@@ -40,14 +56,13 @@
   box-sizing: border-box;
 }
 
-/* Dice Faces */
-.dice-face {
+.dice3d-face {
   background: radial-gradient(circle at 30% 30%, #fff, #ccc);
   border-radius: 12px;
   position: absolute;
   width: 60px;
   height: 60px;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,16 +70,26 @@
   box-sizing: border-box;
 }
 
-/* 3D Face Positioning */
-.dice-front   { transform: rotateY(0deg) translateZ(30px); }
-.dice-back    { transform: rotateY(180deg) translateZ(30px); }
-.dice-right   { transform: rotateY(90deg) translateZ(30px); }
-.dice-left    { transform: rotateY(-90deg) translateZ(30px); }
-.dice-top     { transform: rotateX(90deg) translateZ(30px); }
-.dice-bottom  { transform: rotateX(-90deg) translateZ(30px); }
+.dice3d-front {
+  transform: rotateY(0deg) translateZ(30px);
+}
+.dice3d-back {
+  transform: rotateY(180deg) translateZ(30px);
+}
+.dice3d-right {
+  transform: rotateY(90deg) translateZ(30px);
+}
+.dice3d-left {
+  transform: rotateY(-90deg) translateZ(30px);
+}
+.dice3d-top {
+  transform: rotateX(90deg) translateZ(30px);
+}
+.dice3d-bottom {
+  transform: rotateX(-90deg) translateZ(30px);
+}
 
-/* Dot Styles */
-.dot {
+.dice3d-dot {
   width: 8px;
   height: 8px;
   background: #000;
@@ -73,36 +98,97 @@
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 }
 
-/* Dot Positions */
-/* Face 1 */
-.dice-front .dot1 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.dice3d-front .dot1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-/* Face 2 */
-.dice-back .dot1 { top: 25%; left: 25%; }
-.dice-back .dot2 { bottom: 25%; right: 25%; }
+.dice3d-back .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.dice3d-back .dot2 {
+  bottom: 25%;
+  right: 25%;
+}
 
-/* Face 3 */
-.dice-right .dot1 { top: 25%; left: 25%; }
-.dice-right .dot2 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.dice-right .dot3 { bottom: 25%; right: 25%; }
+.dice3d-right .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.dice3d-right .dot2 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dice3d-right .dot3 {
+  bottom: 25%;
+  right: 25%;
+}
 
-/* Face 4 */
-.dice-left .dot1 { top: 25%; left: 25%; }
-.dice-left .dot2 { top: 25%; right: 25%; }
-.dice-left .dot3 { bottom: 25%; left: 25%; }
-.dice-left .dot4 { bottom: 25%; right: 25%; }
+.dice3d-left .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.dice3d-left .dot2 {
+  top: 25%;
+  right: 25%;
+}
+.dice3d-left .dot3 {
+  bottom: 25%;
+  left: 25%;
+}
+.dice3d-left .dot4 {
+  bottom: 25%;
+  right: 25%;
+}
 
-/* Face 5 */
-.dice-top .dot1 { top: 25%; left: 25%; }
-.dice-top .dot2 { top: 25%; right: 25%; }
-.dice-top .dot3 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.dice-top .dot4 { bottom: 25%; left: 25%; }
-.dice-top .dot5 { bottom: 25%; right: 25%; }
+.dice3d-top .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.dice3d-top .dot2 {
+  top: 25%;
+  right: 25%;
+}
+.dice3d-top .dot3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dice3d-top .dot4 {
+  bottom: 25%;
+  left: 25%;
+}
+.dice3d-top .dot5 {
+  bottom: 25%;
+  right: 25%;
+}
 
-/* Face 6 */
-.dice-bottom .dot1 { top: 25%; left: 25%; }
-.dice-bottom .dot2 { top: 25%; left: 50%; transform: translateX(-50%); }
-.dice-bottom .dot3 { top: 25%; right: 25%; }
-.dice-bottom .dot4 { bottom: 25%; left: 25%; }
-.dice-bottom .dot5 { bottom: 25%; left: 50%; transform: translateX(-50%); }
-.dice-bottom .dot6 { bottom: 25%; right: 25%; }
+.dice3d-bottom .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.dice3d-bottom .dot2 {
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.dice3d-bottom .dot3 {
+  top: 25%;
+  right: 25%;
+}
+.dice3d-bottom .dot4 {
+  bottom: 25%;
+  left: 25%;
+}
+.dice3d-bottom .dot5 {
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.dice3d-bottom .dot6 {
+  bottom: 25%;
+  right: 25%;
+}

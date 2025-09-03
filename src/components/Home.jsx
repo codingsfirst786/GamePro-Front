@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // <- Add this
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import "../Css/Home.css";
 import img1 from "../assets/img1.png";
@@ -8,12 +8,12 @@ import img3 from "../assets/img3.png";
 
 const games = [
   { id: 1, title: "Lucky wheel", img: img1, path: "/wheel" },
-  { id: 2, title: "Dragon Quest", img: img2, path: "/Dice" },
+  { id: 2, title: "Lucky Dice", img: img2, path: "/Dice" },
   { id: 3, title: "Galaxy Shooter", img: img3, path: "/galaxyshooter" },
   { id: 4, title: "Mystic Slots", path: "/mysticslots" },
   { id: 5, title: "Battle Arena", path: "/battlearena" },
   { id: 6, title: "Treasure Hunt", path: "/treasurehunt" },
-  { id: 7, title: "Lucky Dice", path: "/luckydice" },
+  { id: 7, title: "Dragon Quest", path: "/luckydice" },
   { id: 8, title: "Crypto Spin", path: "/cryptospin" },
   { id: 9, title: "Jackpot Frenzy", path: "/jackpotfrenzy" },
 ];
