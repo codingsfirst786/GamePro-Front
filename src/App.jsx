@@ -22,7 +22,7 @@ import AddcoinsUser from "./components/AddcoinsUser.jsx";
 const App = () => {
   return (
     <Router>
-    <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
@@ -41,7 +41,7 @@ const App = () => {
               <Profile />
             </ProtectedRoute>
           }
-        />  
+        />
         <Route
           path="/agentscreen"
           element={
@@ -58,7 +58,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/addcoinsUser"
           element={
             <ProtectedRoute>
@@ -82,7 +82,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/cashout"
           element={
             <ProtectedRoute>
@@ -90,7 +90,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-            <Route
+        <Route
           path="/payment-details"
           element={
             <ProtectedRoute>
