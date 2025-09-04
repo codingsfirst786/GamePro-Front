@@ -140,7 +140,7 @@ const App = () => {
           }
         />
         <Route
-          path="/Avaiator"
+          path="/Aviator"
           element={
             <ProtectedRoute>
               <AviatorPlane />

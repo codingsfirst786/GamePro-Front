@@ -9,7 +9,7 @@ import img3 from "../assets/img3.png";
 const games = [
   { id: 1, title: "Lucky wheel", img: img1, path: "/wheel" },
   { id: 2, title: "Lucky Dice", img: img2, path: "/Dice" },
-  { id: 3, title: "Crash", img: img3, path: "/Avaiator" },
+  { id: 3, title: "Crash", img: img3, path: "/Aviator" },
   { id: 4, title: "Mystic Slots", path: "/mysticslots" },
   { id: 5, title: "Battle Arena", path: "/battlearena" },
   { id: 6, title: "Treasure Hunt", path: "/treasurehunt" },
