@@ -277,14 +277,14 @@ const DiceGame = () => {
 
       {/* History Modal */}
       {showHistory && (
-        <div className="fixed top-8 inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white/10 backdrop-blur-lg border border-[#facc15] rounded-2xl p-6 shadow-2xl max-w-lg w-full">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 px-4 py-6">
+          <div className="bg-white/10 backdrop-blur-lg border border-[#facc15] rounded-2xl p-6 shadow-2xl w-full max-w-lg mx-auto max-h-[90vh] flex flex-col">
             <h2 className="text-xl font-bold mb-4 text-center text-[#facc15]">
               🎲 Game History
             </h2>
 
             {/* Fixed scrollable area */}
-            <div className="h-64 overflow-y-auto pr-2 custom-scroll space-y-2">
+            <div className="flex-1 min-h-0 overflow-y-auto custom-scroll space-y-2">
               {(showAllHistory ? history : history.slice(0, 5)).map(
                 (h, idx) => (
                   <div

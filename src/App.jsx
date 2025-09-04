@@ -18,6 +18,7 @@ import PaymentDetails from "./components/PaymentDetails.jsx";
 import Cashout from "./components/Cashout.jsx";
 import Navbar from "./components/Navbar.jsx";
 import AddcoinsUser from "./components/AddcoinsUser.jsx";
+import AviatorPlane from "./components/Aviator.jsx";
 
 const App = () => {
   return (
@@ -135,6 +136,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <DiceGame />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Avaiator"
+          element={
+            <ProtectedRoute>
+              <AviatorPlane />
             </ProtectedRoute>
           }
         />
